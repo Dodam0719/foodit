@@ -1,6 +1,5 @@
-// 여기에 코드를 작성하세요
 export async function getFoods() {
-  const response = await fetch("https://learn.codeit.kr/1234/foods");
+  const response = await fetch("https://learn.codeit.kr/api/foods");
   const body = await response.json();
   return body;
 }
