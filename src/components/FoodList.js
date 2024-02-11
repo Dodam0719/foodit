@@ -7,6 +7,7 @@ function formatDate(value) {
 
 function FoodListItem({ item, onDelete }) {
   const { imgUrl, title, calorie, content, createdAt } = item;
+
   const handleDeleteClick = () => onDelete(item.id);
 
   return (
@@ -25,7 +26,7 @@ function FoodList({ items, onDelete }) {
   return (
     <ul className="FoodList">
       {items.map((item) => (
-        <li>
+        <li key={item.id}>
           <FoodListItem item={item} onDelete={onDelete} />
         </li>
       ))}
