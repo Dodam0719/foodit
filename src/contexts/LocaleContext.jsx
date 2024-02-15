@@ -1,10 +1,10 @@
-// 여기에 코드를 작성하세요
 import { createContext, useContext, useState } from "react";
 
 const LocaleContext = createContext();
 
-export function LocaleProvider({ defaultValue = "ko", children }) {
+export function LocaleProvider({ defaultValue, children }) {
   const [locale, setLocale] = useState(defaultValue);
+
   return (
     <LocaleContext.Provider value={{ locale, setLocale }}>
       {children}
@@ -19,7 +19,9 @@ export function useLocale() {
     throw new Error("반드시 LocaleProvider 안에서 사용해야 합니다");
   }
 
-  return context.locale;
+  const { locale } = context;
+
+  return locale;
 }
 
 export function useSetLocale() {
@@ -29,5 +31,7 @@ export function useSetLocale() {
     throw new Error("반드시 LocaleProvider 안에서 사용해야 합니다");
   }
 
-  return context.setLocale;
+  const { setLocale } = context;
+
+  return setLocale;
 }
